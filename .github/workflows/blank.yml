@@ -1,0 +1,32 @@
+name: Auto update
+
+on:
+  schedule:
+    - cron: '37 19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare For Update
+        run: |
+          sudo apt-get install openssh-client python3-setuptools
+          git clone https://github.com/bocchi810/loukky-gfwlist-pac
+          pip install genpac
+          git config --global user.email "141204703+bocchi810@users.noreply.github.com"
+          git config --global user.name "bocchi810"
+          
+      - name: Update
+        run: |
+          cd loukky-gfwlist-pac
+          set -x
+          genpac --gfwlist-url https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt -o gfwlist.json --format v2ray --pac-proxy "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080; DIRECT;"
+          git add gfwlist.json
+          git commit -m "[$(LANG=C date)] auto update"
+          git remote set-url --push origin https://bocchi810:$GITHUB_TOKEN@github.com/bocchi810/loukky-gfwlist-pac
+          git push 
