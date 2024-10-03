@@ -6,7 +6,6 @@
                 "outboundTag": "proxy",
                 "type": "field",
                 "domains": [
-                    "domain:0914.global.ssl.fastly.net",
                     "domain:0rz.tw",
                     "domain:1-apple.com.tw",
                     "domain:1000giri.net",
@@ -1349,6 +1348,7 @@
                     "domain:fartit.com",
                     "domain:farwestchina.com",
                     "domain:fast.com",
+                    "domain:fastly.net",
                     "domain:fastssh.com",
                     "domain:faststone.org",
                     "domain:fatakat-n.club",
@@ -3317,7 +3317,6 @@
                     "domain:nytco.com",
                     "domain:nyti.ms",
                     "domain:nytimes.com",
-                    "domain:nytimes.map.fastly.net",
                     "domain:nytimg.com",
                     "domain:nytstyle.com",
                     "domain:nzchinese.com",
