@@ -32,7 +32,6 @@ jobs:
           
       - name: Update
         run: |
-          cd loukky-gfwlist-pac
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           set -x
